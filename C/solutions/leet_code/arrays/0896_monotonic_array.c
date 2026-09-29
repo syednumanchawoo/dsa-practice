@@ -44,3 +44,20 @@ bool isMonotonic(int* nums, int numsSize) {
     }
     return mono;
 }
+
+bool isMonotonic(int* nums, int numsSize){
+    bool inc = true, dec = true;
+
+    for(int i=0; i<numsSize-1; i++){
+        if(nums[i] < nums[i+1]){
+            dec = false;
+        }
+        else if(nums[i] > nums[i+1]){
+            inc = false;
+        }
+    }
+    if(inc || dec){
+        return true;
+    }
+    return false;
+}
