@@ -45,6 +45,10 @@ bool isMonotonic(int* nums, int numsSize) {
     return mono;
 }
 
+/*
+Solution 2
+Remark: Same efficiency but clean
+*/
 bool isMonotonic(int* nums, int numsSize){
     bool inc = true, dec = true;
 
@@ -56,8 +60,5 @@ bool isMonotonic(int* nums, int numsSize){
             inc = false;
         }
     }
-    if(inc || dec){
-        return true;
-    }
-    return false;
+    return inc || dec;
 }
