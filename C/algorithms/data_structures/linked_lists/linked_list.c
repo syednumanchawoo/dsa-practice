@@ -69,3 +69,18 @@ void delete(struct Node **head, int key){
     prev -> next = temp -> next;
     free(temp);
 }
+
+void free_Linked_List(struct Node **head){
+    if(*head == NULL){
+        return;
+    }
+    struct Node *current = *head;
+    struct Node *temp;
+    
+    do{
+        temp = current ->next;
+        free(current);
+        current = temp;
+    }while(temp != NULL);
+    *head = NULL;
+}
