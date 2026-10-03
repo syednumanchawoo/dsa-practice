@@ -43,3 +43,29 @@ void append(struct Node **head, int data){
     }
     last -> next = new_node;
 }
+
+void delete(struct Node **head, int key){
+    // If list is empty
+    if(*head == NULL){
+        return;
+    }
+
+    struct Node *temp = *head;
+    struct Node *prev = temp;
+    // If head node contains key
+    if(temp -> data == key){
+        *head = temp ->next;
+        free(temp);
+        return;
+    }
+    
+    while(temp != NULL  && temp -> data != key){
+        prev = temp;
+        temp = temp -> next;
+        
+    }
+    // If key is not found
+    if (temp == NULL) return;
+    prev -> next = temp -> next;
+    free(temp);
+}
