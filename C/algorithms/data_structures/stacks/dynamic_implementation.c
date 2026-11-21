@@ -33,3 +33,8 @@ int pop(Stack *S){
     free(temp);
     return value;
 }
+
+int peek(Stack *S){
+    return S->top ? S->top->data : INT_MIN;
+}
+
