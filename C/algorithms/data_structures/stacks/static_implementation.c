@@ -1,35 +1,34 @@
 #include <stdio.h>
-#define MAX 100
+#include <limits.h>
+#define CAP 100
 
 typedef struct{
-    int data[MAX];
+    int arr[CAP];
     int top;
 }Stack;
 
-void init(Stack *s) {s->top = -1;}
-int isEmpty(Stack *s) {return s->top == -1;}
-int isFull(Stack *s) {return s->top == MAX - 1;}
+void init(Stack *S){S->top=-1;}
 
-void push(Stack *s, int x){
-    if(isFull(s)) {
-        printf("Stack Overflow\n");
+int isEmpty(const Stack *S){return (S->top==-1);}
+int isFull(const Stack *S){return (S->top == CAP-1);}
+
+void push(Stack *S, int data){
+    if(isFull(S)){
+        printf("Overflow\n");
         return;
     }
-    s->data[++s->top] = x;
+    S->arr[++S->top] = data;
 }
 
-int pop(Stack *s){
-    if(isEmpty(s)){
-        printf("Stack Underflow\n");
-        return -1;
+int pop(Stack *S){
+    if(isEmpty(S)){
+        printf("Underflow\n");
+        return INT_MIN;
     }
-    return s->data[s -> top--];
+    return (S->arr[S->top--]);
 }
 
-int peek(Stack *s){
-    if(isEmpty(s)){
-        return -1;
-    }
-    return s -> data[s -> top];
+int peek(const Stack*S){
+    return isEmpty(S) ? INT_MIN : S->arr[S->top];
 }
 
